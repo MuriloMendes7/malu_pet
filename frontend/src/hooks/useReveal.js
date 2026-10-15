@@ -1,13 +1,16 @@
 import { useEffect } from 'react'
 
-/** Adiciona a classe "is-visible" aos elementos [data-reveal] quando entram na tela. */
+/**
+ * Adiciona a classe "is-visible" aos elementos [data-reveal] quando entram na tela.
+ * Inclui MutationObserver para garantir suporte a elementos adicionados dinamicamente.
+ */
 export default function useReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll('[data-reveal]')
     if (!('IntersectionObserver' in window)) {
-      els.forEach((el) => el.classList.add('is-visible'))
+      document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('is-visible'))
       return
     }
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -17,9 +20,27 @@ export default function useReveal() {
           }
         })
       },
-      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
+      { threshold: 0.1, rootMargin: '0px 0px -20px 0px' },
     )
-    els.forEach((el) => io.observe(el))
-    return () => io.disconnect()
+
+    const observeAll = () => {
+      document.querySelectorAll('[data-reveal]:not(.is-visible)').forEach((el) => {
+        io.observe(el)
+      })
+    }
+
+    observeAll()
+
+    // Observa adições dinâmicas de nós no DOM
+    const mo = new MutationObserver(() => {
+      observeAll()
+    })
+
+    mo.observe(document.body, { childList: true, subtree: true })
+
+    return () => {
+      io.disconnect()
+      mo.disconnect()
+    }
   }, [])
 }

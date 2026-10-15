@@ -13,13 +13,10 @@ export const BUSINESS = {
     { days: 'Domingo e Segunda', time: 'Fechado' },
   ],
   instagram: 'malu.pets',
-  catalogUrl: 'https://wa.me/c/119005054562473',
 }
 
 export const whatsappLink = (message = "Olá! Gostaria de agendar um horário na Malu Pet's 🐾") =>
   `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(message)}`
-
-export const catalogLink = BUSINESS.catalogUrl
 
 export const instagramLink = `https://instagram.com/${BUSINESS.instagram}`
 
@@ -29,7 +26,6 @@ export const mapLink = `https://www.google.com/maps/search/?api=1&query=${mapQue
 
 export const NAV = [
   { href: '#servicos', label: 'Serviços' },
-  { href: '#catalogo', label: 'Catálogo' },
   { href: '#espaco', label: 'Nosso Espaço' },
   { href: '#diferenciais', label: 'Diferenciais' },
   { href: '#visite', label: 'Visite' },

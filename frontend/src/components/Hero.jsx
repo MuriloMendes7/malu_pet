@@ -1,5 +1,5 @@
 import logo from '../assets/logo.webp'
-import { BUSINESS, catalogLink, whatsappLink } from '../data/site'
+import { BUSINESS, whatsappLink } from '../data/site'
 import GoldDust from './GoldDust'
 import Icon, { WhatsAppIcon } from './Icon'
 
@@ -35,8 +35,8 @@ export default function Hero() {
             <a className="btn btn--gold btn--lg" href={whatsappLink()} target="_blank" rel="noreferrer">
               <WhatsAppIcon size={20} /> Agendar pelo WhatsApp
             </a>
-            <a className="btn btn--ghost btn--lg" href={catalogLink} target="_blank" rel="noreferrer">
-              <Icon name="external" size={18} /> Ver Catálogo WhatsApp
+            <a className="btn btn--ghost btn--lg" href="#servicos">
+              Ver Nossos Serviços <Icon name="arrow" size={18} />
             </a>
           </div>
           <ul className="hero__meta">

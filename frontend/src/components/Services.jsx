@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { SERVICES, SERVICE_FILTERS, catalogLink, whatsappLink } from '../data/site'
+import { SERVICES, SERVICE_FILTERS, whatsappLink } from '../data/site'
 import Icon, { WhatsAppIcon } from './Icon'
 import SectionTitle from './SectionTitle'
 
@@ -17,7 +17,7 @@ export default function Services() {
         <SectionTitle
           kicker="Nossos Serviços & Cuidados"
           title="Estética animal de alto padrão com carinho de verdade"
-          subtitle="Especialistas em Spitz Alemão / Lulu da Pomerânia e Tosa Bebê. Escolha o serviço e consulte horários ou valores diretamente no WhatsApp."
+          subtitle="Especialistas em Spitz Alemão / Lulu da Pomerânia e Tosa Bebê. Escolha o serviço desejado e agende diretamente pelo WhatsApp."
         />
 
         {/* Banner de Especialidade */}
@@ -38,7 +38,7 @@ export default function Services() {
               target="_blank"
               rel="noreferrer"
             >
-              <WhatsAppIcon size={18} /> Falar com Especialista
+              <WhatsAppIcon size={18} /> Agendar com Especialista
             </a>
           </div>
         </div>
@@ -58,13 +58,11 @@ export default function Services() {
         </div>
 
         {/* Grid de Serviços */}
-        <div className="services__grid">
-          {filteredServices.map((s, i) => (
+        <div className="services__grid" data-reveal>
+          {filteredServices.map((s) => (
             <article
               key={s.id}
               className={`service-card ${s.featured ? 'service-card--featured' : ''}`}
-              data-reveal
-              style={{ '--delay': `${(i % 3) * 100}ms` }}
             >
               {s.badge && <span className="service-card__badge">{s.badge}</span>}
               <div className="service-card__icon">
@@ -89,34 +87,6 @@ export default function Services() {
               </a>
             </article>
           ))}
-        </div>
-
-        {/* Chamada para o Catálogo Oficial no WhatsApp */}
-        <div id="catalogo" className="catalog-banner" data-reveal>
-          <div className="catalog-banner__inner">
-            <div className="catalog-banner__text">
-              <span className="catalog-banner__kicker">
-                <Icon name="sparkle" size={16} /> Catálogo Completo Online
-              </span>
-              <h3>Deseja ver valores, combos e todas as opções?</h3>
-              <p>
-                Acesse nosso catálogo oficial direto no WhatsApp e veja a lista detalhada de cada procedimento para o porte do seu pet.
-              </p>
-            </div>
-            <div className="catalog-banner__cta">
-              <a
-                className="btn btn--gold btn--lg"
-                href={catalogLink}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <WhatsAppIcon size={20} /> Acessar Catálogo no WhatsApp
-              </a>
-              <small className="catalog-banner__note">
-                <Icon name="external" size={14} /> Abre direto no WhatsApp
-              </small>
-            </div>
-          </div>
         </div>
       </div>
     </section>
