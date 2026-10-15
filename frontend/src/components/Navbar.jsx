@@ -15,10 +15,17 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
+    if (open) {
+      document.body.classList.add('menu-open')
+    } else {
+      document.body.classList.remove('menu-open')
+    }
     const onKey = (e) => e.key === 'Escape' && setOpen(false)
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    return () => {
+      document.body.classList.remove('menu-open')
+      window.removeEventListener('keydown', onKey)
+    }
   }, [open])
 
   const close = () => setOpen(false)
@@ -34,13 +41,31 @@ export default function Navbar() {
           </span>
         </a>
 
+        {/* Backdrop para fechar ao tocar fora no mobile */}
+        <div
+          className={`nav__overlay ${open ? 'nav__overlay--open' : ''}`}
+          onClick={close}
+          aria-hidden="true"
+        />
+
         <nav className="nav__links" aria-label="Principal">
+          <div className="nav__links-header">
+            <span className="nav__links-title">Navegação</span>
+          </div>
+
           {NAV.map((item) => (
             <a key={item.href} href={item.href} onClick={close}>
               {item.label}
             </a>
           ))}
-          <a className="btn btn--gold nav__cta" href={whatsappLink()} target="_blank" rel="noreferrer" onClick={close}>
+
+          <a
+            className="btn btn--gold nav__cta"
+            href={whatsappLink()}
+            target="_blank"
+            rel="noreferrer"
+            onClick={close}
+          >
             <WhatsAppIcon size={18} /> Agendar
           </a>
         </nav>
@@ -49,6 +74,7 @@ export default function Navbar() {
           className="nav__toggle"
           aria-label={open ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={open}
+          type="button"
           onClick={() => setOpen((v) => !v)}
         >
           <span />
