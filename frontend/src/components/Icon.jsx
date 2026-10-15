@@ -48,15 +48,43 @@ const paths = {
       <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
     </>
   ),
-  check: <path d="m5 12.5 4.5 4.5L19 7.5" />,
-  arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
-  paw: (
+  calendar: (
     <>
-      <ellipse cx="12" cy="16" rx="4.5" ry="3.8" />
-      <circle cx="5.5" cy="10.5" r="2" />
-      <circle cx="9.5" cy="6.5" r="2" />
-      <circle cx="14.5" cy="6.5" r="2" />
-      <circle cx="18.5" cy="10.5" r="2" />
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <path d="M16 2v4M8 2v4M3 10h18" />
+    </>
+  ),
+  shield: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />,
+  layers: (
+    <>
+      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline points="2 17 12 22 22 17" />
+      <polyline points="2 12 12 17 22 12" />
+    </>
+  ),
+  smile: (
+    <>
+      <circle cx="12" cy="12" r="10" />
+      <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
+    </>
+  ),
+  plus: (
+    <>
+      <line x1="12" y1="5" x2="12" y2="19" />
+      <line x1="5" y1="12" x2="19" y2="12" />
+    </>
+  ),
+  fruit: (
+    <>
+      <circle cx="12" cy="14" r="7" />
+      <path d="M12 7c0-3 3-4 5-4M12 7c-1-2-3-3-5-3" />
+    </>
+  ),
+  external: (
+    <>
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
     </>
   ),
 }

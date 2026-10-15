@@ -1,28 +1,74 @@
-import { SERVICES, whatsappLink } from '../data/site'
+import { useState } from 'react'
+import { SERVICES, SERVICE_FILTERS, catalogLink, whatsappLink } from '../data/site'
 import Icon, { WhatsAppIcon } from './Icon'
 import SectionTitle from './SectionTitle'
 
 export default function Services() {
+  const [activeFilter, setActiveFilter] = useState('todos')
+
+  const filteredServices =
+    activeFilter === 'todos'
+      ? SERVICES
+      : SERVICES.filter((s) => s.category === activeFilter)
+
   return (
     <section id="servicos" className="section services">
       <div className="container">
         <SectionTitle
-          kicker="Nossos serviços"
-          title="Cuidado sob medida para cada pet"
-          subtitle="Escolha o tratamento ideal e agende em poucos segundos pelo WhatsApp."
+          kicker="Nossos Serviços & Cuidados"
+          title="Estética animal de alto padrão com carinho de verdade"
+          subtitle="Especialistas em Spitz Alemão / Lulu da Pomerânia e Tosa Bebê. Escolha o serviço e consulte horários ou valores diretamente no WhatsApp."
         />
 
+        {/* Banner de Especialidade */}
+        <div className="specialty-banner" data-reveal>
+          <div className="specialty-banner__content">
+            <span className="specialty-banner__tag">
+              <Icon name="crown" size={16} /> Destaque Malu Pet’s
+            </span>
+            <h3>Especialistas em Lulu / Spitz Alemão &amp; Tosa Bebê</h3>
+            <p>
+              Técnicas dedicadas à preservação do subpelo, densidade e saúde da pelagem dupla dos Spitz, além do corte e harmonização facial artística da Tosa Bebê.
+            </p>
+          </div>
+          <div className="specialty-banner__actions">
+            <a
+              className="btn btn--gold"
+              href={whatsappLink('Olá! Gostaria de agendar um horário com a especialista em Spitz / Tosa Bebê 👑🐾')}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <WhatsAppIcon size={18} /> Falar com Especialista
+            </a>
+          </div>
+        </div>
+
+        {/* Filtros de Categoria */}
+        <div className="services__filters" data-reveal>
+          {SERVICE_FILTERS.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              className={`filter-btn ${activeFilter === f.id ? 'filter-btn--active' : ''}`}
+              onClick={() => setActiveFilter(f.id)}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Grid de Serviços */}
         <div className="services__grid">
-          {SERVICES.map((s, i) => (
+          {filteredServices.map((s, i) => (
             <article
               key={s.id}
               className={`service-card ${s.featured ? 'service-card--featured' : ''}`}
               data-reveal
-              style={{ '--delay': `${i * 120}ms` }}
+              style={{ '--delay': `${(i % 3) * 100}ms` }}
             >
-              {s.featured && <span className="service-card__badge">Experiência Premium</span>}
+              {s.badge && <span className="service-card__badge">{s.badge}</span>}
               <div className="service-card__icon">
-                <Icon name={s.icon} size={30} />
+                <Icon name={s.icon} size={28} />
               </div>
               <h3>{s.title}</h3>
               <p>{s.description}</p>
@@ -39,10 +85,38 @@ export default function Services() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <WhatsAppIcon size={18} /> Agendar {s.title}
+                <WhatsAppIcon size={18} /> Agendar no WhatsApp
               </a>
             </article>
           ))}
+        </div>
+
+        {/* Chamada para o Catálogo Oficial no WhatsApp */}
+        <div id="catalogo" className="catalog-banner" data-reveal>
+          <div className="catalog-banner__inner">
+            <div className="catalog-banner__text">
+              <span className="catalog-banner__kicker">
+                <Icon name="sparkle" size={16} /> Catálogo Completo Online
+              </span>
+              <h3>Deseja ver valores, combos e todas as opções?</h3>
+              <p>
+                Acesse nosso catálogo oficial direto no WhatsApp e veja a lista detalhada de cada procedimento para o porte do seu pet.
+              </p>
+            </div>
+            <div className="catalog-banner__cta">
+              <a
+                className="btn btn--gold btn--lg"
+                href={catalogLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <WhatsAppIcon size={20} /> Acessar Catálogo no WhatsApp
+              </a>
+              <small className="catalog-banner__note">
+                <Icon name="external" size={14} /> Abre direto no WhatsApp
+              </small>
+            </div>
+          </div>
         </div>
       </div>
     </section>

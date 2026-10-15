@@ -500,6 +500,32 @@ ul {
   animation: rise 0.9s 0.2s var(--ease) both;
 }
 
+.hero__lead strong {
+  color: var(--gold-300);
+  font-weight: 500;
+}
+
+.hero__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+  animation: rise 0.9s 0.25s var(--ease) both;
+}
+
+.hero__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: var(--gold-300);
+  font-size: 0.85rem;
+  backdrop-filter: blur(8px);
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -675,6 +701,91 @@ ul {
   background: radial-gradient(circle at 15% 0%, rgba(212, 175, 55, 0.12), transparent 45%), var(--ivory);
 }
 
+/* Banner de Especialidade Spitz e Tosa Bebê */
+.specialty-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2.25rem 2.75rem;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.22), transparent 45%),
+    linear-gradient(135deg, var(--purple-800) 0%, var(--purple-950) 100%);
+  border: 1.5px solid var(--gold-500);
+  box-shadow: var(--shadow-gold), 0 25px 50px -20px rgba(34, 5, 47, 0.6);
+  margin-bottom: 2.75rem;
+  color: var(--ivory);
+}
+
+.specialty-banner__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: var(--gold-gradient);
+  color: var(--purple-950);
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.75rem;
+}
+
+.specialty-banner h3 {
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  color: var(--gold-300);
+  margin-bottom: 0.5rem;
+}
+
+.specialty-banner p {
+  color: rgba(251, 246, 238, 0.85);
+  max-width: 650px;
+  font-size: 1.02rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.specialty-banner__actions {
+  flex-shrink: 0;
+}
+
+/* Filtros de Categoria */
+.services__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 3.25rem;
+}
+
+.filter-btn {
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(85, 26, 119, 0.18);
+  background: #fff;
+  color: var(--purple-800);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+
+.filter-btn:hover {
+  border-color: var(--purple-600);
+  background: #fbf6ee;
+  transform: translateY(-2px);
+}
+
+.filter-btn--active {
+  background: var(--purple-800);
+  color: var(--gold-300);
+  border-color: var(--purple-800);
+  box-shadow: 0 8px 20px -6px rgba(47, 10, 66, 0.4);
+}
+
 .services__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -790,6 +901,67 @@ ul {
   text-transform: uppercase;
   white-space: nowrap;
   box-shadow: var(--shadow-gold);
+}
+
+/* Banner de Acesso ao Catálogo WhatsApp */
+.catalog-banner {
+  margin-top: 4.5rem;
+  padding: 2.75rem 3rem;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.15), transparent 50%),
+    linear-gradient(135deg, var(--purple-900) 0%, var(--purple-950) 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 30px 60px -25px rgba(34, 5, 47, 0.7), var(--shadow-gold);
+  color: var(--ivory);
+}
+
+.catalog-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.catalog-banner__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--gold-400);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.catalog-banner h3 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--gold-300);
+  margin-bottom: 0.5rem;
+}
+
+.catalog-banner p {
+  color: rgba(251, 246, 238, 0.82);
+  max-width: 620px;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.catalog-banner__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+.catalog-banner__note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: rgba(251, 246, 238, 0.6);
+  font-size: 0.82rem;
 }
 
 /* --------------------------------------------------------------------------
@@ -1433,6 +1605,22 @@ ul {
     margin-inline: auto;
   }
 
+  .hero__pills {
+    justify-content: center;
+  }
+
+  .specialty-banner,
+  .catalog-banner__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.75rem;
+  }
+
+  .specialty-banner p,
+  .catalog-banner p {
+    margin-inline: auto;
+  }
+
   .cta-banner {
     flex-direction: column;
     text-align: center;
@@ -1489,6 +1677,27 @@ ul {
 
   .cta-banner .btn {
     width: 100%;
+  }
+
+  .specialty-banner,
+  .catalog-banner {
+    padding: 1.75rem 1.4rem;
+  }
+
+  .specialty-banner__actions,
+  .catalog-banner__cta,
+  .specialty-banner__actions .btn,
+  .catalog-banner__cta .btn {
+    width: 100%;
+  }
+
+  .services__filters {
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    font-size: 0.88rem;
+    padding: 0.5rem 1rem;
   }
 
   .footer__inner,
